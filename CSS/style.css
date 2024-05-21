@@ -1,0 +1,15 @@
+a {
+    font-family: 'Jua', sans-serif;
+}
+
+h1 {
+    font-family: 'Jua', sans-serif;
+}
+
+.title {
+    font-weight: 400;
+    color: white;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 5vw;
+    margin-top: 20vh;
+}

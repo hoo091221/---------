@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <link href="./CSS/style.css" rel="stylesheet">
+</head>
+
+<body style="background:black;">
+    <center>
+        <h1 class="title">avoid!</h1>
+    </center>
+    <style>
+        .img {
+            position: fixed;
+            height: 10vw;
+            transition: all 1s ease;
+            transition-property: transform;
+            transition-timing-function: linear;
+            transform: infinite;
+            transition-duration: 5s;
+        }
+    </style>
+    <script>
+        window.onload = async function() {
+            for (let i = 1; i < 15; i++) {
+                background();
+                await delay(1000);
+            }
+        }
+        async function background() {
+            while (true) {
+                var i = Math.floor(Math.random() * 3 + 1);
+                console.log(i);
+                var img1 = document.createElement("img");
+                img1.src = `./img/${i}.png`;
+                document.body.appendChild(img1);
+                img1.style.filter = `hue-rotate(${Math.floor(Math.random() * 361)}deg)`;
+                img1.classList.add('img');
+
+                var random = Math.floor(Math.random() * 4 + 1);
+
+                if (random == 1) { // + +
+                    var lotateX = Math.floor(Math.random() * 100);
+
+                    img1.style.transitionDuration = "0s";
+                    img1.style.transform = `translate(${lotateX}vw, -100%)`;
+
+                    var randomX = Math.floor(Math.random() * 300 - [document.body.width] / 2 * lotateX / 100);
+                    var randomY = 500 - randomX;
+
+                } else if (random == 2) { // - +
+                    var lotateY = Math.floor(Math.random() * 100);
+
+                    img1.style.transitionDuration = "0s";
+                    img1.style.transform = `translate(-100vw, ${lotateX}vw)`;
+
+                    var randomX = Math.floor(Math.random() * 300 + 500);
+                    var randomY = 800 - randomX;
+
+                } else if (random == 3) { // + -
+                    var lotateY = Math.floor(Math.random() * 100);
+
+                    img1.style.transitionDuration = "0s";
+                    img1.style.transform = `translate(-100vw, ${lotateX}vw)`;
+
+                    var randomX = -(Math.floor(Math.random() * 300 + 500));
+                    var randomY = 800 + randomX;
+
+                } else if (random == 4) { // - -
+                    var lotateX = Math.floor(Math.random() * 100);
+
+                    img1.style.transitionDuration = "0s";
+                    img1.style.transform = `translate(${lotateX}vw, 120vw)`;
+
+                    var randomX = Math.floor(Math.random() * 300 - [document.body.width] * lotateX / 100);
+                    var randomY = -(500 - randomX);
+
+                }
+
+                await delay(100);
+
+                img1.style.transitionDuration = "15s";
+                img1.style.transform = `translate(${randomX}vw, ${randomY}vw)`;
+                await delay(8000);
+                img1.remove();
+            }
+        };
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+
+</html>

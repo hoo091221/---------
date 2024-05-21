@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <canvas id="tcanvas" width="1000" height="500" style='border:1px solid #000'>
+    </canvas>
+
+    <script>
+        function wait(sec) {
+            let start = Date.now(),
+                now = start;
+            while (now - start < sec * 1000) {
+                now = Date.now();
+            }
+        }
+
+        function background(img, x, y, xsize, ysize) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, x, y, xsize, ysize);
+            for (let i = 0; i < 100; i++) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(img, x + i, y + i, xsize, ysize);
+                wait(0.01);
+            }
+        }
+
+        var canvas = document.getElementById("tcanvas");
+        var ctx = canvas.getContext("2d");
+        var img1 = new Image();
+        var img2 = new Image();
+        var img3 = new Image();
+        //이미지 객체 생성 
+
+        img1.src = "./img/1.png";
+        img2.src = "./img/2.png";
+        img3.src = "./img/3.png";
+        window.onload = function() {
+            // img1.onload = function() {
+            //(20,20)을 중심으로 100*100의 사이즈로 이미지를 그림
+            background(img1, 0, 0, 150, 120);
+
+            // }
+            // img2.onload = function() {
+            //     //(20,20)을 중심으로 100*100의 사이즈로 이미지를 그림
+            //     ctx.drawImage(img2, 20, 20, 150, 120);
+
+            // }
+            // img3.onload = function() {
+            //     //(20,20)을 중심으로 100*100의 사이즈로 이미지를 그림
+            //     ctx.drawImage(img3, 20, 20, 150, 120);
+
+            // }
+        }
+    </script>
+
+
+</body>
+
+</html>
